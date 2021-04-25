@@ -208,6 +208,11 @@ function get_options_for(app) {
 					if (input_file.startsWith('node_modules/')) {
 						prefix = path.resolve(get_app_path(app), '..');
 					}
+					// else if (output_file.startsWith('css/rtl/')) {
+					// 	prefix = assets_path;
+					// 	console.log(path.resolve(prefix, input_file));
+					// }
+
 					return path.resolve(prefix, input_file);
 				});
 			return Object.assign(

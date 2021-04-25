@@ -36,9 +36,14 @@ app_include_js = [
 	"/assets/js/control.min.js",
 	"/assets/js/report.min.js",
 ]
+app_include_rtl_css = [
+	"/assets/css/frappe-rtl.css",
+	"/assets/css/desk-rtl.min.css",
+	"/assets/css/report-rtl.min.css"
+]
 app_include_css = [
 	"/assets/css/desk.min.css",
-	"/assets/css/report.min.css",
+	"/assets/css/report.min.css"
 ]
 
 doctype_js = {
