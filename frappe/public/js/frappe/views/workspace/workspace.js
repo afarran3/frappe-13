@@ -88,12 +88,6 @@ frappe.views.Workspace = class Workspace {
 
 	build_sidebar_section(title, items) {
 		let sidebar_section = $(`<div class="standard-sidebar-section"></div>`);
-		let translated_sidebar_categories = [
-			__("Modules"),
-			__("Domains"),
-			__("Places"),
-			__("Administration")
-		];
 
 		// DO NOT REMOVE: Comment to load translation
 		// __("Modules") __("Domains") __("Places") __("Administration")

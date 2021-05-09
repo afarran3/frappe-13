@@ -31,12 +31,6 @@ class WidgetDialog {
 	}
 
 	get_title() {
-		let translated_title = [
-			__("Add Chart"),
-			__("Add Shortcut"),
-			__("Edit Chart"),
-			__("Edit Shortcut")
-		];
 		// DO NOT REMOVE: Comment to load translation
 		// __("New Chart") __("New Shortcut") __("Edit Chart") __("Edit Shortcut")
 
