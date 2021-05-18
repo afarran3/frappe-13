@@ -931,9 +931,9 @@ th {
   margin-left: 0;
 }
 .dropdown-menu {
-  right: 0;
+  right: unset !important;
   left: auto;
-  float: left;
+  float: left !important;
   text-align: right;
 }
 .dropdown-menu.pull-right {
@@ -1386,6 +1386,7 @@ th {
   margin-left: auto;
 }
 .popover {
+  right: unset !important;
   left: auto;
   text-align: right;
 }

@@ -8,8 +8,6 @@ from frappe.translate import get_user_lang
 
 def is_rtl(lang=None) :
 	local_lang = get_user_lang(frappe.session.user)
-	print("----------+++", local_lang, "+++----------")
-	# print("----------+++", frappe.local.lang, "+++----------")
 	return local_lang in ["ar", "he", "fa"] or local_lang == lang
 
 no_cache = 1

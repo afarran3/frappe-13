@@ -71,26 +71,31 @@ function build_from_(options ,app=null) {
 		return build(inputOptions, outputOptions)
 			.then(() => {
 				log(`${chalk.green('✔')} Built ${output_file}`);
+			})
+			.then(() => {
+				if (app != null) {
+					let ltr_file_name = [];
+					if (app == "frappe"){
+						ltr_file_name = ["desk.min.css", "report.min.css", "frappe-web-b4.css"];
+					}
+					else {
+						ltr_file_name = [app + ".css", app  + "-web.css"];
+					}
+					ltr_file_name.forEach((item) => {
+						const file_path = path.resolve(assets_path, 'css/');
+						if (output_file.split('/')[1] == item) {
+							create_rtl_assets(file_path, item);
+						}
+					});
+				}
 			});
 	});
 
 	const start = Date.now();
 	return Promise.all(promises)
 		.then(() => {
-			const file_path = path.resolve(assets_path, 'css/');
-			let ltr_file_name = [];
-			if (app == "frappe"){
-				ltr_file_name = ["desk.min.css", "report.min.css"];
-			}
-			else {
-				ltr_file_name = [app + ".css"];
-			}
-			create_rtl_assets(file_path, ltr_file_name);
-
-			setTimeout(() => {
-				const time = Date.now() - start;
-				log(chalk.green(`✨  Done in ${time / 1000}s`));
-			}, 1000);
+			const time = Date.now() - start;
+			log(chalk.green(`✨  Done in ${time / 1000}s`));
 		});
 }
 
@@ -194,16 +199,16 @@ function create_rtl_assets(file_path, ltr_file_name) {
 	const fs = require('fs');
 	const rtlcss = require('rtlcss');
 
-	for (let i of ltr_file_name) {
+	// for (let i of ltr_file_name) {
 		// console.log(file_path);
-		const ltr_css = fs.readFileSync(path.resolve(file_path, i), 'utf8');
-		const rtl_css = rtlcss.process(ltr_css);
-		const rtl_file_name = i.substring(0, i.indexOf(".")) + "-rtl" + i.substring(i.indexOf("."));
-		fs.writeFile(path.resolve(file_path, rtl_file_name), rtl_css, function(err) {
-			if(err) {
-				return console.log(err);
-			}
-			log(`${chalk.green('✔')} Built css/${rtl_file_name}`);
-		});
-	}
+	const ltr_css = fs.readFileSync(path.resolve(file_path, ltr_file_name), 'utf8');
+	const rtl_css = rtlcss.process(ltr_css);
+	const rtl_file_name = ltr_file_name.substring(0, ltr_file_name.indexOf(".")) + "-rtl" + ltr_file_name.substring(ltr_file_name.indexOf("."));
+	fs.writeFile(path.resolve(file_path, rtl_file_name), rtl_css, function(err) {
+		if(err) {
+			return console.log(err);
+		}
+		log(`${chalk.green('✔')} Built css/${rtl_file_name}`);
+	});
+	// }
 }
