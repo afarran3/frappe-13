@@ -106,7 +106,7 @@ class ChartDialog extends WidgetDialog {
 			{
 				fieldtype: "Link",
 				fieldname: "chart_name",
-				label: "Chart Name",
+				label: __("Chart Name"),
 				options: "Dashboard Chart",
 				reqd: 1,
 			},
@@ -144,7 +144,7 @@ class ShortcutDialog extends WidgetDialog {
 			{
 				fieldtype: "Select",
 				fieldname: "type",
-				label: "Type",
+				label: __("Type"),
 				reqd: 1,
 				options: "DocType\nReport\nPage\nDashboard",
 				onchange: () => {
@@ -165,7 +165,7 @@ class ShortcutDialog extends WidgetDialog {
 			{
 				fieldtype: "Data",
 				fieldname: "label",
-				label: "Label",
+				label: __("Label"),
 			},
 			{
 				fieldtype: "Column Break",
@@ -174,7 +174,7 @@ class ShortcutDialog extends WidgetDialog {
 			{
 				fieldtype: "Dynamic Link",
 				fieldname: "link_to",
-				label: "Link To",
+				label: __("Link To"),
 				reqd: 1,
 				options: "type",
 				onchange: () => {
@@ -201,7 +201,7 @@ class ShortcutDialog extends WidgetDialog {
 			{
 				fieldtype: "Select",
 				fieldname: "doc_view",
-				label: "DocType View",
+				label: __("DocType View"),
 				options: "List\nReport Builder\nDashboard\nTree\nNew\nCalendar",
 				description: __("Which view of the associated DocType should this shortcut take you to?"),
 				default: "List",

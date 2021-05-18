@@ -3,6 +3,15 @@
 
 frappe.provide("frappe.ui.toolbar");
 frappe.provide('frappe.search');
+// var translated_menu_title = [
+// 	__("My Profile"),
+// 	__("My Settings"),
+// 	__("View Website"),
+// 	__("Toggle Full Width"),
+// 	__("Background Jobs"),
+// 	__("Logout"),
+// 	__("About")
+// ];
 
 frappe.ui.toolbar.Toolbar = class {
 	constructor () {
