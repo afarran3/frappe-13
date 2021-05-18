@@ -57,6 +57,8 @@ web_include_js = [
 
 web_include_css = []
 
+web_include_rtl_css = []
+
 website_route_rules = [
 	{"from_route": "/blog/<category>", "to_route": "Blog Post"},
 	{"from_route": "/kb/<category>", "to_route": "Help Article"},

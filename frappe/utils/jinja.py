@@ -129,6 +129,7 @@ def set_filters(jenv):
 	import frappe
 	from frappe.utils import global_date_format, cint, cstr, flt, markdown
 	from frappe.website.utils import get_shade, abs_url
+	from frappe.www.app import is_rtl
 
 	jenv.filters["global_date_format"] = global_date_format
 	jenv.filters["markdown"] = markdown
@@ -139,6 +140,7 @@ def set_filters(jenv):
 	jenv.filters["str"] = cstr
 	jenv.filters["flt"] = flt
 	jenv.filters["abs_url"] = abs_url
+	jenv.filters["is_rtl"] = is_rtl
 
 	if frappe.flags.in_setup_help:
 		return
