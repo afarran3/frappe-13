@@ -12,6 +12,7 @@ from frappe.modules import scrub
 from frappe.www.printview import get_visible_columns
 import frappe.exceptions
 import frappe.integrations.utils
+from frappe.frappeclient import FrappeClient
 
 class ServerScriptNotEnabled(frappe.PermissionError):
 	pass
@@ -104,8 +105,10 @@ def get_safe_globals():
 			make_post_request = frappe.integrations.utils.make_post_request,
 			socketio_port=frappe.conf.socketio_port,
 			get_hooks=frappe.get_hooks,
-			sanitize_html=frappe.utils.sanitize_html
+			sanitize_html=frappe.utils.sanitize_html,
+			log_error=frappe.log_error
 		),
+		FrappeClient=FrappeClient,
 		style=frappe._dict(
 			border_color='#d1d8dd'
 		),
@@ -116,7 +119,7 @@ def get_safe_globals():
 		scrub=scrub,
 		guess_mimetype=mimetypes.guess_type,
 		html2text=html2text,
-		dev_server=1 if os.environ.get('DEV_SERVER', False) else 0,
+		dev_server=1 if frappe._dev_server else 0,
 		run_script=run_script
 	)
 
