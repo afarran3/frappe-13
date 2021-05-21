@@ -195,9 +195,7 @@ function create_rtl_assets(file_path, ltr_file_name) {
 
 	const dir = "/*rtl:raw:body{direction: rtl; text-align: right;}*/"
 	const ltr_css = dir + fs.readFileSync(path.resolve(file_path, ltr_file_name), 'utf8');
-	// console.log("ltr_css == " + ltr_css);
 	const rtl_css = rtlcss.process(ltr_css);
-	// console.log("rtl_css == " +rtl_css);
 	const rtl_file_name = ltr_file_name.substring(0, ltr_file_name.indexOf(".")) + "-rtl" + ltr_file_name.substring(ltr_file_name.indexOf("."));
 	fs.writeFile(path.resolve(file_path, rtl_file_name), rtl_css, function(err) {
 		if(err) {
