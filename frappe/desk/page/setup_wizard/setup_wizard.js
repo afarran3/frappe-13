@@ -38,6 +38,7 @@ frappe.pages['setup-wizard'].on_page_load = function (wrapper) {
 			freeze: true,
 			callback: function (r) {
 				frappe.setup.data.lang = r.message;
+				console.log(frappe.setup.data.lang.default_language);
 
 				frappe.setup.run_event("before_load");
 				var wizard_settings = {
@@ -182,6 +183,7 @@ frappe.setup.SetupWizard = class SetupWizard extends frappe.ui.Slides {
 			this.container.find('.form-control').first().focus();
 		}, 200);
 		this.in_refresh_slides = false;
+		location.reload();
 	}
 
 	action_on_complete() {
@@ -363,11 +365,11 @@ frappe.setup.slides_settings = [
 
 			var language_field = slide.get_field("language");
 
-			language_field.set_input(frappe.setup.data.default_language || "English");
+			language_field.set_input(frappe.setup.data.lang.default_language || "English");
 
-			if (!frappe.setup._from_load_messages) {
-				language_field.$input.trigger("change");
-			}
+			// if (!frappe.setup._from_load_messages) {
+			// 	language_field.$input.trigger("change");
+			// }
 			delete frappe.setup._from_load_messages;
 			moment.locale("en");
 		},
@@ -556,19 +558,25 @@ frappe.setup.utils = {
 		slide.get_input("language").unbind("change").on("change", function () {
 			clearTimeout(slide.language_call_timeout);
 			slide.language_call_timeout = setTimeout(() => {
+				frappe.dom.freeze();
 				var lang = $(this).val() || "English";
 				frappe._messages = {};
 				frappe.call({
 					method: "frappe.desk.page.setup_wizard.setup_wizard.load_messages",
-					freeze: true,
+					// freeze: true,
 					args: {
 						language: lang
 					},
 					callback: function () {
 						frappe.setup._from_load_messages = true;
 						frappe.wizard.refresh_slides();
+						setTimeout(() => {
+							frappe.dom.unfreeze();
+						}, 1000);
+
 					}
 				});
+
 			}, 500);
 		});
 	},
