@@ -10,7 +10,7 @@ from six.moves.urllib.parse import quote
 from frappe.website.router import resolve_route
 from frappe.website.doctype.website_theme.website_theme import add_website_theme
 from frappe.integrations.doctype.google_settings.google_settings import get_auth_url
-from frappe.translate import get_user_lang
+from frappe.translate import get_user_lang, guess_language
 
 
 def is_rtl(lang=None) :
@@ -146,7 +146,7 @@ def get_website_settings(context=None):
 
 	context.web_include_js = hooks.web_include_js or []
 
-	context.web_include_css = hooks.web_include_rtl_css if is_rtl() else hooks.web_include_css or []
+	context.web_include_css = hooks.web_include_rtl_css if guess_language() in ["ar", "he", "fa"] else hooks.web_include_css or []
 
 	via_hooks = frappe.get_hooks("website_context")
 	for key in via_hooks:

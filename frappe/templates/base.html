@@ -29,7 +29,7 @@
 
 		{%- if theme.name != 'Standard' -%}
 		<link type="text/css" rel="stylesheet" href="{{ theme.theme_url }}">
-		{%- elif rtl | is_rtl == True -%}
+		{%- elif lang | guess_language in ["ar", "he", "fa"] -%}
 		<link type="text/css" rel="stylesheet" href="/assets/css/frappe-web-b4-rtl.css?ver={{ build_version }}">
 		{%- else -%}
 		<link type="text/css" rel="stylesheet" href="/assets/css/frappe-web-b4.css?ver={{ build_version }}">
