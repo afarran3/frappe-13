@@ -135,3 +135,7 @@ g.chart-legend {
 .datepicker {
   right: unset !important;
 }
+
+.awesomplete>ul {
+  top: 2.5em;
+}
