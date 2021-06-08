@@ -24,10 +24,12 @@ def guess_language(lang_list=None):
 	user_preferred_language = frappe.request.cookies.get('preferred_language')
 	is_guest_user = not frappe.session.user or frappe.session.user == 'Guest'
 	if is_guest_user and user_preferred_language:
+		print("user_preferred_language = ", user_preferred_language)
 		return user_preferred_language
 
 	lang_codes = frappe.request.accept_languages.values()
 	if not lang_codes:
+		print("frappe.local.lang = ", frappe.local.lang)
 		return frappe.local.lang
 
 	guess = None
@@ -48,7 +50,8 @@ def guess_language(lang_list=None):
 			if code in lang_list:
 				guess = code
 				break
-
+	print("guess = ", guess)
+	print("frappe.local.lang = ", frappe.local.lang)
 	return guess or frappe.local.lang
 
 def get_user_lang(user=None):
