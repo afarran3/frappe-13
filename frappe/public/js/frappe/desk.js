@@ -64,7 +64,7 @@ frappe.Application = Class.extend({
 			}
 		});
 
-		this.set_rtl();
+		// this.set_rtl();
 
 		// page container
 		this.make_page_container();

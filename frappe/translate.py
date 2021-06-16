@@ -114,8 +114,8 @@ def get_dict(fortype, name=None):
 			for app in apps:
 				messages.extend(get_server_messages(app))
 
-			messages += get_messages_from_navbar()
 			messages += get_messages_from_include_files()
+			messages += frappe.db.sql("""select "navbar", item_label from `tabNavbar Item` where item_label is not null""")
 			messages += frappe.db.sql("select 'Print Format:', name from `tabPrint Format`")
 			messages += frappe.db.sql("select 'DocType:', name from tabDocType")
 			messages += frappe.db.sql("select 'Role:', name from tabRole")
@@ -489,7 +489,7 @@ def get_server_messages(app):
 	messages = []
 	file_extensions = ('.py', '.html', '.js', '.vue')
 	for basepath, folders, files in os.walk(frappe.get_pymodule_path(app)):
-		for dontwalk in (".git", "public", "locale"):
+		for dontwalk in (".git", "locale"):
 			if dontwalk in folders: folders.remove(dontwalk)
 
 		for f in files:
@@ -507,7 +507,7 @@ def get_messages_from_include_files(app_name=None):
 	include_js = app_include_js + web_include_js
 
 	for js_path in include_js:
-		relative_path = os.path.join(frappe.local.sites_path, js_path.lstrip('/'))
+		relative_path = os.path.join(frappe.local.sites_path, js_path.strip('/'))
 		messages_from_file = get_messages_from_file(relative_path)
 		messages.extend(messages_from_file)
 

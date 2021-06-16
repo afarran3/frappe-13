@@ -265,7 +265,7 @@ Traceback,Traceback,
 URL,رابط الانترنت,
 Unsubscribed,إلغاء اشتراكك,
 Use Sandbox,استخدام ساندبوكس,
-User,المستعمل,
+User,المستخدم,
 User ID,تعريف المستخدم,
 Users,المستخدمين,
 Validity,الصلاحية,
@@ -523,7 +523,7 @@ Back to Desk,العودة الى المكتب,
 Back to Login,العودة إلى تسجيل الدخول,
 Background Color,لون الخلفية,
 Background Email Queue,قائمة معالجة البريد الإلكتروني,
-Background Jobs,خلفية عن الخبرات السابقة,
+Background Jobs,أعمال الخلفية,
 Background Workers,قائمة العمليات,
 Backup,النسخ الاحتياطي,
 Backup Frequency,معدل النسخ الاحتياطي,
@@ -676,7 +676,7 @@ Click to Set Filters,انقر لضبط المرشحات,
 Clicked,النقر,
 Client Credentials,وثائق تفويض العميل,
 Client Information,معلومات العميل,
-Client Script,العميل النصي,
+Client Script,البرمجة النصية للـ Client,
 Client URLs,الروابط للعميل,
 Client side script extensions in Javascript,ملحقات النصي جانب العميل في جافا سكريبت,
 Collapsible,للطي,
@@ -798,11 +798,11 @@ DESC,تنازلي,
 Daily Event Digest is sent for Calendar Events where reminders are set.,يتم إرسال ملخص الأحداث اليومي لأحداث التقويم المطلوب لها تذكير,
 Danger,خطر,
 Dark Color,لون غامق,
-Dashboard Chart,مخطط لوحة القيادة,
-Dashboard Chart Link,لوحة الرسم البياني رابط,
-Dashboard Chart Source,مصدر مخطط لوحة القيادة,
-Dashboard Name,اسم لوحة القيادة,
-Dashboards,لوحات,
+Dashboard Chart,مخطط لوحة التحكم,
+Dashboard Chart Link,مرجع مخطط لوحة التحكم,
+Dashboard Chart Source,مصدر مخطط لوحة التحكم,
+Dashboard Name,اسم لوحة التحكم,
+Dashboards,لوحات التحكم,
 Data,البيانات,
 Data Export,تصدير البيانات,
 Data Import,استيراد البيانات,
@@ -1303,7 +1303,7 @@ In Filter,في تصفية,
 In Global Search,في البحث العالمية,
 In Grid View,في شبكة عرض,
 In Hours,في ساعات,
-In List View,في عرض القائمة,
+In List View,في قائمة العرض,
 In Preview,في المعاينة,
 In Reply To,ردا على,
 In Standard Filter,في التصفية الرئيسية,
@@ -1562,7 +1562,7 @@ Milestone Tracker,معلما المقتفي,
 Minimum Password Score,الحد الأدنى من كلمة المرور,
 Miss,يغيب,
 Missing Fields,حقول مفقودة,
-Missing parameter Kanban Board Name,المعلمة مفقودة كانبان اسم المجلس,
+Missing parameter Kanban Board Name,المتغير إسم لوحة الكانبان مفقود,
 Missing parameters for login,المعلمات المفقودة لتسجيل الدخول,
 Models (building blocks) of the Application,نماذج (اللبنات) من التطبيق,
 Modified By,عدل من قبل,
@@ -2018,7 +2018,7 @@ Reference DocName,مرجع DocName,
 Reference DocType and Reference Name are required,مطلوب مرجع دوكتيب واسم مرجع,
 Reference Report,تقرير مرجعي,
 Reference: {0} {1},إشارة: {0} {1},
-Refreshing...,يحديث ...,
+Refreshing...,تحديث ...,
 Register OAuth Client App,تسجيل أوث العميل التطبيقات,
 Registered but disabled,سجل لكن المعوقين,
 Relapsed,انتكس,
@@ -2063,7 +2063,7 @@ Report updated successfully,تم تحديث التقرير بنجاح,
 Report was not saved (there were errors),لم يتم حفظ التقرير (كانت هناك أخطاء),
 Report {0},تقرير {0},
 Report {0} is disabled,تقرير غير مفعلة {0},
-Report:,أبلغ عن:,
+Report:,تقرير:,
 Represents a User in the system.,يمثل العضو في النظام.,
 Represents the states allowed in one document and role assigned to change the state.,يمثل الحالات المسموح بها في وثيقة واحدة لصلاحية المنوط بها تغيير الحالة.,
 Request Timed Out,طلب مهلة,
@@ -2153,7 +2153,7 @@ Saving,حفظ,
 Saving...,إنقاذ...,
 Scan the QR Code and enter the resulting code displayed.,مسح رمز الاستجابة السريعة وأدخل رمز الناتجة عرضها.,
 Scopes,نطاقات,
-Script,سيناريو,
+Script,برنامج نصي,
 Script Report,تقرير النصي,
 Script or Query reports,تقارير النصي أو سؤال,
 Script to attach to all web pages.,النصي لنعلق على كل صفحات الويب.,
@@ -2289,7 +2289,7 @@ Shop,تسوق,
 Short keyboard patterns are easy to guess,نماذج لوحة المفاتيح قصيرة من السهل تخمين,
 Show Attachments,عرض المرفقات,
 Show Calendar,إظهار التقويم,
-Show Dashboard,عرض لوحة القيادة,
+Show Dashboard,عرض لوحة التحكم,
 Show Full Error and Allow Reporting of Issues to the Developer,إظهار خطأ كامل والسماح للإبلاغ عن القضايا إلى المطور,
 Show Line Breaks after Sections,فواصل عرض الخط بعد الأقسام,
 Show Permissions,مشاهدة ضوابط,
@@ -3011,7 +3011,7 @@ zoom-in,تكبير,
 zoom-out,تصغير,
 {0} Calendar,{0} التقويم,
 {0} Chart,{0} الرسم البياني,
-{0} Dashboard,{0} لوحة المعلومات,
+{0} Dashboard,{0} لوحة التحكم,
 {0} List,قائمة {0},
 {0} Modules,{0} وحدات,
 {0} Report,{0} تقرير,
@@ -3155,7 +3155,7 @@ After Save,بعد الحفظ,
 After Save (Submitted Document),بعد الحفظ (المستند المقدم),
 After Submit,بعد تقديم,
 Aggregate Function Based On,مجموع وظيفة بناء على,
-Aggregate Function field is required to create a dashboard chart,حقل تجميع الوظائف مطلوب لإنشاء مخطط لوحة القيادة,
+Aggregate Function field is required to create a dashboard chart,حقل تجميع الوظائف مطلوب لإنشاء مخطط لوحة التحكم,
 All Records,جميع السجلات,
 Allot Points To Assigned Users,تخصيص نقاط للمستخدمين المعينين,
 Allow Auto Repeat,السماح للتكرار التلقائي,
@@ -3253,7 +3253,7 @@ Document Type Field Mapping,تعيين نوع المستند المستند,
 Document Type Mapping,تعيين نوع المستند,
 Document Type {0} has been repeated.,تم تكرار نوع المستند {0}.,
 Document renamed from {0} to {1},تمت إعادة تسمية المستند من {0} إلى {1},
-Document type is required to create a dashboard chart,نوع المستند مطلوب لإنشاء مخطط لوحة معلومات,
+Document type is required to create a dashboard chart,نوع المستند مطلوب لإنشاء مخطط لوحة التحكم,
 Documentation Link,رابط التوثيق,
 Don't Import,لا تستورد,
 Don't Send Emails,لا ترسل رسائل البريد الإلكتروني,
@@ -3351,7 +3351,7 @@ Google Settings,إعدادات جوجل,
 Group By,مجموعة من,
 Group By Based On,تجميع حسب,
 Group By Type,مجموعة حسب النوع,
-Group By field is required to create a dashboard chart,حقل تجميع حسب مطلوب لإنشاء مخطط لوحة القيادة,
+Group By field is required to create a dashboard chart,حقل تجميع حسب مطلوب لإنشاء مخطط لوحة التحكم,
 HH:mm,HH: مم,
 HH:mm:ss,HH: MM: SS,
 HOOK-.####,صنارة صيد-.####,
@@ -3474,7 +3474,7 @@ Parent Field (Tree),حقل الأصل (شجرة),
 Parent Field must be a valid fieldname,يجب أن يكون حقل الأصل اسمًا صالحًا للحقل,
 Pin Globally,دبوس على الصعيد العالمي,
 Places,أماكن,
-Please check the filter values set for Dashboard Chart: {},يرجى التحقق من قيم المرشح المحددة لمخطط لوحة المعلومات: {},
+Please check the filter values set for Dashboard Chart: {},يرجى التحقق من قيم المرشح المحددة لمخطط لوحة التحكم: {},
 Please enable pop-ups in your browser,يرجى تمكين النوافذ المنبثقة في متصفحك,
 Please find attached {0}: {1},يرجى الاطلاع على المرفق {0}: {1},
 Please select applicable Doctypes,يرجى اختيار الأساليب المناسبة,
@@ -3535,7 +3535,7 @@ Select list item,حدد عنصر القائمة,
 Select multiple list items,حدد عناصر قائمة متعددة,
 Send an email to {0} to link it here,أرسل بريدًا إلكترونيًا إلى {0} لربطه هنا,
 Server Action,عمل الخادم,
-Server Script,خادم النصي,
+Server Script,البرمجة النصية للـ Server,
 Session Default,الجلسة الافتراضية,
 Session Default Settings,إعدادات الجلسة الافتراضية,
 Session Defaults,الجلسة الافتراضية,
@@ -3571,7 +3571,7 @@ Sync with Google Contacts,مزامنة مع جهات اتصال Google,
 Synced,مزامن,
 Syncing,المزامنة,
 Syncing {0} of {1},مزامنة {0} من {1},
-Tag Link,علامة الارتباط,
+Tag Link,مرجع العلامة,
 Take Backup,خذ نسخة احتياطية,
 Template Error,خطأ في القالب,
 Template Options,خيارات القالب,
@@ -3589,7 +3589,7 @@ There should be atleast one row for {0} table,يجب أن يكون هناك صف
 This action is only allowed for {},هذا الإجراء مسموح به فقط لـ {},
 This cannot be undone,هذا لا يمكن التراجع عنها,
 Time Format,تنسيق الوقت,
-Time series based on is required to create a dashboard chart,مطلوب سلسلة زمنية بناءً على إنشاء مخطط لوحة معلومات,
+Time series based on is required to create a dashboard chart,مطلوب سلسلة 'زمنية بناءً على' لإنشاء مخطط لوحة التحكم,
 Time {0} must be in format: {1},يجب أن يكون الوقت {0} بالتنسيق: {1},
 "To configure Auto Repeat, enable ""Allow Auto Repeat"" from {0}.",لتهيئة التكرار التلقائي ، قم بتمكين &quot;السماح بالتكرار التلقائي&quot; من {0}.,
 To enable it follow the instructions in the following link: {0},لتمكينه ، اتبع التعليمات في الرابط التالي: {0},
@@ -3825,7 +3825,7 @@ Clear,واضح,
 Comment,تعليق,
 Comments,تعليقات,
 DRAFT,مسودة,
-Dashboard,لوحة القيادة,
+Dashboard,لوحة التحكم,
 DocType,DocType,
 Download,تحميل,
 EMail,البريد الإلكتروني,
@@ -3845,7 +3845,7 @@ Link,حلقة الوصل,
 Logged in,تسجيل الدخول,
 New,جديد,
 Not Found,لم يتم العثور على,
-Not Like,لا تعجبني,
+Not Like,ليس مثل,
 Notify by Email,الإخطار عن طريق البريد الإلكتروني,
 Now,الآن,
 Off,إيقاف,
@@ -3865,7 +3865,7 @@ Tags,بطاقات,
 Time,زمن,
 Updated Successfully,تم التحديث بنجاح,
 Upload,تحميل,
-User ,المستعمل,
+User ,المستخدم,
 Value,القيمة,
 Web Link,رابط موقع,
 Your Email Address,عنوان البريد الإلكتروني الخاص بك,
@@ -3922,7 +3922,7 @@ comment,تعليق,
 comments,تعليقات,
 created,أنشأ,
 danger,خطر,
-dashboard,لوحة القيادة,
+dashboard,لوحة التحكم,
 download,تحميل,
 edit,تصحيح,
 email inbox,البريد الوارد,
@@ -3969,11 +3969,11 @@ trash,القمامة,
 upload,رفع,
 user,مستخدم,
 value,قيمة,
-web link,ارتباط ويب,
+web link,رابط ويب,
 yellow,الأصفر,
 Not permitted,غير مسموح به,
-Add Chart to Dashboard,إضافة مخطط إلى لوحة القيادة,
-Add to Dashboard,إضافة إلى لوحة القيادة,
+Add Chart to Dashboard,إضافة مخطط إلى لوحة التحكم,
+Add to Dashboard,إضافة إلى لوحة التحكم,
 Google Translation,ترجمة جوجل,
 Important,مهم,
 No Filters Set,لا توجد فلاتر,
@@ -3981,13 +3981,13 @@ No Records Created,لا سجلات تم إنشاؤها,
 Please Set Chart,يرجى وضع الرسم البياني,
 Please create chart first,يرجى إنشاء الرسم البياني أولا,
 "Report has no data, please modify the filters or change the Report Name",لا يحتوي التقرير على بيانات ، يرجى تعديل الفلاتر أو تغيير اسم التقرير,
-Select Dashboard,اختر لوحة القيادة,
+Select Dashboard,اختر لوحة تحكم,
 Y Field,Y الميدان,
 You need to be in developer mode to edit this document,يجب أن تكون في وضع المطور لتحرير هذا المستند,
 Cards,بطاقات,
 Community Contribution,مساهمة المجتمع,
 Count Filter,عد مرشح,
-Dashboard Chart Field,حقل مخطط لوحة القيادة,
+Dashboard Chart Field,حقل مخطط لوحة التحكم,
 Desk Card,بطاقة مكتب,
 Desk Chart,مكتب الرسم البياني,
 Desk Page,مكتب الصفحة,
@@ -4007,6 +4007,7 @@ Shortcuts,اختصارات,
 X Field,X الميدان,
 Y Axis,المحور ص,
 workspace,مساحة العمل,
+Workspace,مساحة العمل,
 Setup > User,الإعداد&gt; المستخدم,
 Setup > Customize Form,الإعداد&gt; تخصيص النموذج,
 Setup > User Permissions,الإعداد&gt; أذونات المستخدم,
@@ -4038,10 +4039,10 @@ Reset LDAP Password,إعادة تعيين كلمة مرور LDAP,
 Confirm New Password,تأكيد كلمة المرور الجديدة,
 Logout All Sessions,تسجيل الخروج من جميع الجلسات,
 Passwords do not match!,كلمة المرور غير مطابقة!,
-Dashboard Manager,مدير لوحة القيادة,
-Dashboard Settings,اعدادات اللوحة الرئيسية,
+Dashboard Manager,مدير لوحة التحكم,
+Dashboard Settings,اعدادات لوحة التحكم,
 Chart Configuration,تكوين الرسم البياني,
-No Permitted Charts on this Dashboard,لا توجد مخططات مسموح بها في لوحة المعلومات هذه,
+No Permitted Charts on this Dashboard,لا توجد مخططات مسموح بها في لوحة التحكم هذه,
 No Permitted Charts,لا توجد مخططات مسموح بها,
 Reset Chart,إعادة تعيين المخطط,
 via {0},عبر {0},
@@ -4132,14 +4133,14 @@ Couldn't Load Desk,تعذر تحميل المكتب,
 Customize Workspace,تخصيص مساحة العمل,
 Customizations Saved Successfully,تم حفظ التخصيصات بنجاح,
 Something went wrong while saving customizations,حدث خطأ ما أثناء حفظ التخصيصات,
-{} Dashboard,{} لوحة القيادة,
+{} Dashboard,{} لوحة التحكم,
 No changes in document,لا توجد تغييرات في المستند,
 by Role,حسب الدور,
 Document is only editable by users with role,المستند قابل للتحرير فقط من قبل المستخدمين ذوي الدور,
 {0}: Other permission rules may also apply,{0}: قد تنطبق قواعد أذونات أخرى أيضًا,
 {0} Page Views,{0} مشاهدات الصفحة,
-Expand,وسعت,
-Collapse,انهيار,
+Expand,توسيع,
+Collapse,طيّ,
 "Invalid Bearer token, please provide a valid access token with prefix 'Bearer'.",رمز الحامل غير صالح ، يرجى تقديم رمز وصول صالح مع البادئة &quot;Bearer&quot;.,
 "Failed to decode token, please provide a valid base64-encoded token.",فشل فك الرمز المميز ، يرجى تقديم رمز مميز صالح بترميز base64.,
 "Invalid token, please provide a valid token with prefix 'Basic' or 'Token'.",رمز غير صالح ، يرجى تقديم رمز صالح مع البادئة &quot;أساسي&quot; أو &quot;رمز مميز&quot;.,
@@ -4218,7 +4219,7 @@ since last year,منذ السنة الماضية,
 Show,تبين,
 New Number Card,بطاقة رقم جديدة,
 Your Shortcuts,اختصاراتك,
-You haven't added any Dashboard Charts or Number Cards yet.,لم تقم بإضافة أي مخططات لوحة معلومات أو بطاقات أرقام حتى الآن.,
+You haven't added any Dashboard Charts or Number Cards yet.,لم تقم بإضافة أي مخططات لوحة تحكم أو بطاقات أرقام حتى الآن.,
 Click On Customize to add your first widget,انقر فوق تخصيص لإضافة عنصر واجهة المستخدم الأول الخاص بك,
 Are you sure you want to reset all customizations?,هل أنت متأكد أنك تريد إعادة تعيين كافة التخصيصات؟,
 "Couldn't save, please check the data you have entered",تعذر الحفظ ، يرجى التحقق من البيانات التي أدخلتها,
@@ -4334,7 +4335,7 @@ Click on the row for accessing filters.,انقر فوق الصف للوصول إ
 Sites,المواقع,
 Last Deployed On,آخر نشر في,
 Console Log,سجل وحدة التحكم,
-"Set Default Options for all charts on this Dashboard (Ex: ""colors"": [""#d1d8dd"", ""#ff5858""])",تعيين الخيارات الافتراضية لجميع الرسوم البيانية في لوحة المعلومات هذه (على سبيل المثال: &quot;الألوان&quot;: [&quot;# d1d8dd&quot;، &quot;# ff5858&quot;]),
+"Set Default Options for all charts on this Dashboard (Ex: ""colors"": [""#d1d8dd"", ""#ff5858""])",تعيين الخيارات الافتراضية لجميع الرسوم البيانية في لوحة التحكم هذه (على سبيل المثال: &quot;الألوان&quot;: [&quot;# d1d8dd&quot;، &quot;# ff5858&quot;]),
 Use Report Chart,استخدم مخطط التقرير,
 Heatmap,خريطة الحرارة,
 Dynamic Filters,مرشحات ديناميكية,
@@ -4608,11 +4609,11 @@ New Mention on {0},إشارة جديدة في {0},
 Assignment Update on {0},تحديث الواجب بتاريخ {0},
 New Document Shared {0},مستند جديد مشترك {0},
 Energy Point Update on {0},تحديث Energy Point على {0},
-You cannot create a dashboard chart from single DocTypes,لا يمكنك إنشاء مخطط لوحة معلومات من أنواع DocTypes الفردية,
+You cannot create a dashboard chart from single DocTypes,لا يمكنك إنشاء مخطط لوحة تحكم من نوع single DocTypes,
 Invalid json added in the custom options: {0},تمت إضافة json غير صالح في الخيارات المخصصة: {0},
 Invalid JSON in card links for {0},JSON غير صالح في روابط البطاقة لـ {0},
 Standard Not Set,المعيار غير محدد,
-Please set the following documents in this Dashboard as standard first.,يرجى تعيين المستندات التالية في لوحة المعلومات هذه كمعيار أولاً.,
+Please set the following documents in this Dashboard as standard first.,يرجى تعيين المستندات التالية في لوحة التحكم هذه كمعيار أولاً.,
 Shared with the following Users with Read access:{0},مشترك مع المستخدمين التاليين الذين لهم حق الوصول للقراءة: {0},
 Already in the following Users ToDo list:{0},بالفعل في قائمة &quot;المهام للمستخدمين&quot; التالية: {0},
 Your assignment on {0} {1} has been removed by {2},تمت إزالة واجبك في {0} {1} بواسطة {2},
@@ -4700,3 +4701,49 @@ Value cannot be negative for {0}: {1},لا يمكن أن تكون القيمة �
 Negative Value,قيمة سالبة,
 Authentication failed while receiving emails from Email Account: {0}.,فشلت المصادقة أثناء تلقي رسائل البريد الإلكتروني من حساب البريد الإلكتروني: {0}.,
 Message from server: {0},رسالة من الخادم: {0},
+
+Save Customizations,حفظ التخصيصات,
+Reset Customizations,إعادة تعيين التخصيصات,
+Type,النوع,
+Link To,ربط بـ,
+DocType View,DocType المراد عرضة,
+Add Chart,إضافة مخطط,
+Add Shortcut,إضافة إختصار,
+Add a Filter,إضافة مرشح,
+No filters selected,لم يتم إختيار مرشح,
+Choose a color,قم بإختيار لون,
+My Profile,الملف الشخصي,
+My Settings,إعداداتي,
+Toggle Full Width,تبديل العرض الكامل,
+About,معلومات عن البرنامج,
+List View,قائمة العرض,
+View,واجهة,
+List,القائمة,
+Report,التقرير,
+Dashboard,لوحة التحكم,
+Gantt,مخطط جانت,
+Kanban,لوحة الكانبان,
+Calendar,التقويم,
+Image,الصورة,
+Inbox,صندةق الوارد,
+Tree,المشجر,
+Map,الخريطة,
+Search or type a command (Ctrl + G),انقر للبحث أو إضغط على أزرار (Ctrl + G),
+Dashboard View,واجهة لوحة التحكم,
+{0} View,واجهة {0},
+Choose Kanban Board,قم باختيار لوحة كانبان,
+Customize Dashboard,تخصيص لوحة التحكم,
+Reset Dashboard Customizations,إعادة ضبط تخصيص لوحة التحكم,
+Edit Filters,تحرير المرشحات,
+Show Saved,عرض المحفوظات,
+Hide Saved,إخفاء المحفوظات,
+Apply Filters,تطبيق المرشحات,
+No New notifications,لا يوجد إشعارات جديدة,
+Looks like you haven’t received any notifications.,يبدو أنك لم تتلق أي إشعارات.,
+No Upcoming Events,لا توجد أحداث قادمة,
+There are no upcoming events for you.,لا توجد أحداث قادمة لك.,
+Elements,عناصر,
+Models,نماذج,
+Views,واجهات,
+Scripting,البرمجة النصية,
+You haven't created a {0} yet,لم تقم بإنشاء {0} بعد,
