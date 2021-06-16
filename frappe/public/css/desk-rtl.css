@@ -123,7 +123,7 @@ ul.tree-children {
   text-align: right;
 }
 
-g.chart-legend {
+g.chart-legend .chart-container {
   direction: ltr !important;
 }
 
