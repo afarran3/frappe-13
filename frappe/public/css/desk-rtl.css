@@ -126,3 +126,12 @@ ul.tree-children {
 g.chart-legend {
   direction: ltr !important;
 }
+
+.datepickers-container {
+  right: unset !important;
+  left: 0 !important;
+}
+
+.datepicker {
+  right: unset !important;
+}
