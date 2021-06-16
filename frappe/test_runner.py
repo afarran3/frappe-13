@@ -9,7 +9,6 @@ import time
 import xmlrunner
 import importlib
 from frappe.modules import load_doctype_module, get_module_name
-from frappe.utils import cstr
 import frappe.utils.scheduler
 import cProfile, pstats
 from six import StringIO
@@ -117,13 +116,16 @@ def run_all_tests(app=None, verbose=False, profile=False, ui_tests=False, failfa
 	test_suite = unittest.TestSuite()
 	for app in apps:
 		for path, folders, files in os.walk(frappe.get_pymodule_path(app)):
-			for dontwalk in ('locals', '.git', 'public'):
+			for dontwalk in ('locals', '.git', 'public', '__pycache__'):
 				if dontwalk in folders:
 					folders.remove(dontwalk)
 
+			# for predictability
+			folders.sort()
+			files.sort()
+
 			# print path
 			for filename in files:
-				filename = cstr(filename)
 				if filename.startswith("test_") and filename.endswith(".py")\
 					and filename != 'test_runner.py':
 					# print filename[:-3]
@@ -304,6 +306,8 @@ def get_dependencies(doctype):
 		for doctype_name in test_module.test_ignore:
 			if doctype_name in options_list:
 				options_list.remove(doctype_name)
+
+	options_list.sort()
 
 	return options_list
 

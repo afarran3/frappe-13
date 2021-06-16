@@ -48,7 +48,7 @@ def get_context(context):
 		"css": get_print_style(frappe.form_dict.style, print_format),
 		"comment": frappe.session.user,
 		"title": doc.get(meta.title_field) if meta.title_field else doc.name,
-		"has_rtl": True if frappe.local.lang in ["ar", "he", "fa"] else False
+		"has_rtl": True if frappe.local.lang in ["ar", "he", "fa", "ps"] else False
 	}
 
 def get_print_format_doc(print_format_name, meta):
@@ -409,7 +409,7 @@ def get_print_style(style=None, print_format=None, for_legacy=False):
 		css = css + '\n' + frappe.db.get_value('Print Style', style, 'css')
 
 	# move @import to top
-	for at_import in list(set(re.findall("(@import url\([^\)]+\)[;]?)", css))):
+	for at_import in list(set(re.findall(r"(@import url\([^\)]+\)[;]?)", css))):
 		css = css.replace(at_import, "")
 
 		# prepend css with at_import
@@ -505,8 +505,9 @@ window.print();
 
 // close the window after print
 // NOTE: doesn't close if print is cancelled in Chrome
+// Changed timeout to 5s from 1s because it blocked mobile view rendering
 setTimeout(function() {
 	window.close();
-}, 1000);
+}, 5000);
 </script>
 """

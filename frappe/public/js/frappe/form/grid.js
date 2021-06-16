@@ -194,7 +194,10 @@ export default class Grid {
 		}
 
 		tasks.push(() => {
-			if (dirty) this.refresh();
+			if (dirty) {
+				this.refresh();
+				this.frm && this.frm.script_manager.trigger(this.df.fieldname + "_delete", this.doctype);
+			}
 		});
 
 		frappe.run_serially(tasks);
@@ -210,6 +213,7 @@ export default class Grid {
 			this.frm.doc[this.df.fieldname] = [];
 			$(this.parent).find('.rows').empty();
 			this.grid_rows = [];
+			this.frm.script_manager.trigger(this.df.fieldname + "_delete", this.doctype);
 
 			this.wrapper.find('.grid-heading-row .grid-row-check:checked:first').prop('checked', 0);
 			this.refresh();
@@ -232,6 +236,10 @@ export default class Grid {
 	}
 
 	refresh_remove_rows_button() {
+		if (this.df.cannot_delete_rows) {
+			return;
+		}
+
 		this.remove_rows_button.toggleClass('hidden',
 			this.wrapper.find('.grid-body .grid-row-check:checked:first').length ? false : true);
 		this.remove_all_rows_button.toggleClass('hidden',
@@ -341,6 +349,9 @@ export default class Grid {
 			if (d.idx === undefined) {
 				d.idx = ri + 1;
 			}
+			if (d.name === undefined) {
+				d.name = "row " + d.idx;
+			}
 			if (this.grid_rows[ri] && !append_row) {
 				var grid_row = this.grid_rows[ri];
 				grid_row.doc = d;
@@ -382,6 +393,8 @@ export default class Grid {
 		} else if (this.grid_rows.length < this.grid_pagination.page_length) {
 			this.wrapper.find('.grid-footer').toggle(false);
 		}
+
+		this.wrapper.find('.grid-add-row, .grid-add-multiple-rows').toggle(this.is_editable());
 
 	}
 
@@ -900,5 +913,26 @@ export default class Grid {
 	clear_custom_buttons() {
 		// hide all custom buttons
 		this.grid_buttons.find('.btn-custom').addClass('hidden');
+	}
+
+	update_docfield_property(fieldname, property, value) {
+		// update the docfield of each row
+		if (!this.grid_rows) {
+			return;
+		}
+
+		for (let row of this.grid_rows) {
+			let docfield = row.docfields.find(d => d.fieldname === fieldname);
+			if (docfield) {
+				docfield[property] = value;
+			} else {
+				throw `field ${fieldname} not found`;
+			}
+		}
+
+		// update the parent too (for new rows)
+		this.docfields.find(d => d.fieldname === fieldname)[property] = value;
+
+		this.refresh();
 	}
 }

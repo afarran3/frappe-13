@@ -10,11 +10,18 @@ be used to build database driven apps.
 
 Read the documentation: https://frappeframework.com/docs
 """
-from __future__ import unicode_literals, print_function
+import os, warnings
 
-from six import iteritems, binary_type, text_type, string_types, PY2
+_dev_server = os.environ.get('DEV_SERVER', False)
+
+if _dev_server:
+	warnings.simplefilter('always', DeprecationWarning)
+	warnings.simplefilter('always', PendingDeprecationWarning)
+
+from six import iteritems, binary_type, text_type, string_types
 from werkzeug.local import Local, release_local
-import os, sys, importlib, inspect, json
+import sys, importlib, inspect, json
+import typing
 from past.builtins import cmp
 import click
 
@@ -26,14 +33,7 @@ from .utils.lazy_loader import lazy_import
 # Lazy imports
 faker = lazy_import('faker')
 
-
-# Harmless for Python 3
-# For Python 2 set default encoding to utf-8
-if PY2:
-	reload(sys)
-	sys.setdefaultencoding("utf-8")
-
-__version__ = '13.0.2'
+__version__ = '13.5.1'
 
 __title__ = "Frappe Framework"
 
@@ -134,6 +134,14 @@ message_log = local("message_log")
 
 lang = local("lang")
 
+# This if block is never executed when running the code. It is only used for
+# telling static code analyzer where to find dynamically defined attributes.
+if typing.TYPE_CHECKING:
+	from frappe.database.mariadb.database import MariaDBDatabase
+	from frappe.database.postgres.database import PostgresDatabase
+	db: typing.Union[MariaDBDatabase, PostgresDatabase]
+# end: static analysis hack
+
 def init(site, sites_path=None, new_site=False):
 	"""Initialize frappe for the current site. Reset thread locals `frappe.local`"""
 	if getattr(local, "initialised", None):
@@ -195,7 +203,7 @@ def init(site, sites_path=None, new_site=False):
 	local.meta_cache = {}
 	local.form_dict = _dict()
 	local.session = _dict()
-	local.dev_server = os.environ.get('DEV_SERVER', False)
+	local.dev_server = _dev_server
 
 	setup_module_map()
 
@@ -556,8 +564,15 @@ def whitelist(allow_guest=False, xss_safe=False, methods=None):
 
 	def innerfn(fn):
 		global whitelisted, guest_methods, xss_safe_methods, allowed_http_methods_for_whitelisted_func
-		whitelisted.append(fn)
 
+		# get function from the unbound / bound method
+		# this is needed because functions can be compared, but not methods
+		method = None
+		if hasattr(fn, '__func__'):
+			method = fn
+			fn = method.__func__
+
+		whitelisted.append(fn)
 		allowed_http_methods_for_whitelisted_func[fn] = methods
 
 		if allow_guest:
@@ -566,9 +581,23 @@ def whitelist(allow_guest=False, xss_safe=False, methods=None):
 			if xss_safe:
 				xss_safe_methods.append(fn)
 
-		return fn
+		return method or fn
 
 	return innerfn
+
+def is_whitelisted(method):
+	from frappe.utils import sanitize_html
+
+	is_guest = session['user'] == 'Guest'
+	if method not in whitelisted or is_guest and method not in guest_methods:
+		throw(_("Not permitted"), PermissionError)
+
+	if is_guest and method not in xss_safe_methods:
+		# strictly sanitize form_dict
+		# escapes html characters like <> except for predefined tags like a, b, ul etc.
+		for key, value in form_dict.items():
+			if isinstance(value, string_types):
+				form_dict[key] = sanitize_html(value)
 
 def read_only():
 	def innfn(fn):
@@ -945,7 +974,7 @@ def get_pymodule_path(modulename, *joins):
 	:param *joins: Join additional path elements using `os.path.join`."""
 	if not "public" in joins:
 		joins = [scrub(part) for part in joins]
-	return os.path.join(os.path.dirname(get_module(scrub(modulename)).__file__), *joins)
+	return os.path.join(os.path.dirname(get_module(scrub(modulename)).__file__ or ''), *joins)
 
 def get_module_list(app_name):
 	"""Get list of modules for given all via `app/modules.txt`."""
@@ -1079,9 +1108,7 @@ def setup_module_map():
 
 	if not (local.app_modules and local.module_app):
 		local.module_app, local.app_modules = {}, {}
-		for app in get_all_apps(True):
-			if app == "webnotes":
-				app = "frappe"
+		for app in get_all_apps(with_internal_apps=True):
 			local.app_modules.setdefault(app, [])
 			for module in get_module_list(app):
 				module = scrub(module)
@@ -1148,13 +1175,10 @@ def get_newargs(fn, kwargs):
 	if hasattr(fn, 'fnargs'):
 		fnargs = fn.fnargs
 	else:
-		try:
-			fnargs, varargs, varkw, defaults = inspect.getargspec(fn)
-		except ValueError:
-			fnargs = inspect.getfullargspec(fn).args
-			varargs = inspect.getfullargspec(fn).varargs
-			varkw = inspect.getfullargspec(fn).varkw
-			defaults = inspect.getfullargspec(fn).defaults
+		fnargs = inspect.getfullargspec(fn).args
+		varargs = inspect.getfullargspec(fn).varargs
+		varkw = inspect.getfullargspec(fn).varkw
+		defaults = inspect.getfullargspec(fn).defaults
 
 	newargs = {}
 	for a in kwargs:
@@ -1662,6 +1686,23 @@ def safe_eval(code, eval_globals=None, eval_locals=None):
 		"long": int,
 		"round": round
 	}
+
+	UNSAFE_ATTRIBUTES = {
+		# Generator Attributes
+		"gi_frame", "gi_code",
+		# Coroutine Attributes
+		"cr_frame", "cr_code", "cr_origin",
+		# Async Generator Attributes
+		"ag_code", "ag_frame",
+		# Traceback Attributes
+		"tb_frame", "tb_next",
+		# Format Attributes
+		"format", "format_map",
+	}
+
+	for attribute in UNSAFE_ATTRIBUTES:
+		if attribute in code:
+			throw('Illegal rule {0}. Cannot use "{1}"'.format(bold(code), attribute))
 
 	if '__' in code:
 		throw('Illegal rule {0}. Cannot use "__"'.format(bold(code)))

@@ -498,7 +498,7 @@ class File(Document):
 		self.file_size = self.check_max_file_size()
 
 		if (
-			self.content_type and "image" in self.content_type
+			self.content_type and self.content_type == "image/jpeg"
 			and frappe.get_system_settings("strip_exif_metadata_from_uploaded_images")
 		):
 			self.content = strip_exif_data(self.content, self.content_type)
@@ -912,7 +912,7 @@ def extract_images_from_html(doc, content):
 		return '<img src="{file_url}"'.format(file_url=file_url)
 
 	if content and isinstance(content, string_types):
-		content = re.sub('<img[^>]*src\s*=\s*["\'](?=data:)(.*?)["\']', _save_file, content)
+		content = re.sub(r'<img[^>]*src\s*=\s*["\'](?=data:)(.*?)["\']', _save_file, content)
 
 	return content
 
@@ -970,12 +970,22 @@ def get_files_in_folder(folder, start=0, page_length=20):
 	start = cint(start)
 	page_length = cint(page_length)
 
-	files = frappe.db.get_all('File',
+	attachment_folder = frappe.db.get_value('File',
+		'Home/Attachments',
+		['name', 'file_name', 'file_url', 'is_folder', 'modified'],
+		as_dict=1
+	)
+
+	files = frappe.db.get_list('File',
 		{ 'folder': folder },
 		['name', 'file_name', 'file_url', 'is_folder', 'modified'],
 		start=start,
 		page_length=page_length + 1
 	)
+
+	if folder == 'Home' and attachment_folder not in files:
+		files.insert(0, attachment_folder)
+
 	return {
 		'files': files[:page_length],
 		'has_more': len(files) > page_length
