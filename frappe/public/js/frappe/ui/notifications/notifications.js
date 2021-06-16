@@ -430,7 +430,7 @@ class EventsView extends BaseNotificationsView {
 				<div class="notification-null-state">
 					<div class="text-center">
 					<img src="/assets/frappe/images/ui-states/event-empty-state.svg" alt="Generic Empty State" class="null-state">
-					<div class="title">${__("No Upcoming Events</div")}>
+					<div class="title">${__('No Upcoming Events')}</div>
 					<div class="subtitle">
 						${__('There are no upcoming events for you.')}
 				</div></div></div>
