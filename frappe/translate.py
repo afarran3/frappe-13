@@ -117,8 +117,8 @@ def get_dict(fortype, name=None):
 			for app in apps:
 				messages.extend(get_server_messages(app))
 
-			messages += get_messages_from_navbar()
 			messages += get_messages_from_include_files()
+			messages += frappe.db.sql("""select "navbar", item_label from `tabNavbar Item` where item_label is not null""")
 			messages += frappe.db.sql("select 'Print Format:', name from `tabPrint Format`")
 			messages += frappe.db.sql("select 'DocType:', name from tabDocType")
 			messages += frappe.db.sql("select 'Role:', name from tabRole")
